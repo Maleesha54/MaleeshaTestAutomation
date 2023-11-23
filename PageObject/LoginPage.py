@@ -12,6 +12,7 @@ class LoginPage(BasePage):
     INSERT_PASSWORD_ID_LOCATOR = "input-password"
     CLICK_LOGIN_BUTTON_CSS_SELECTOR = "input.btn"
     EDIT_ACCOUNT_LINK_CSS_SELECTOR = "#content>ul:nth-child(2)>li:nth-child(1)>a:nth-child(1)"
+    WARNING_TEXT_CSS_SELECTOR = ".alert"
 
     def insert_username(self, username):
         # self.driver.find_element(By.ID, self.INSERT_USERNAME_ID_LOCATOR).send_keys(username)
@@ -28,3 +29,7 @@ class LoginPage(BasePage):
     def verify_edit_link(self):
         # self.driver.find_element(By.CSS_SELECTOR, self.EDIT_ACCOUNT_LINK_CSS_SELECTOR).is_displayed()
         self.is_element_displayed(By.CSS_SELECTOR, self.EDIT_ACCOUNT_LINK_CSS_SELECTOR)
+
+    def login_warning_text(self):
+        # self.driver.find_element(By.CSS_SELECTOR, self.WARNING_TEXT_CSS_SELECTOR).is_displayed()
+        self.is_element_displayed(By.CSS_SELECTOR, self.WARNING_TEXT_CSS_SELECTOR)

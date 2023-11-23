@@ -18,3 +18,13 @@ class TestLogin:
         self.lp.insert_password(password)
         self.lp.click_login_button()
         self.lp.verify_edit_link()
+
+    @pytest.mark.parametrize("username,password", excelUtil.get_data("TestData/invalidtestdata.xlsx", "logintestsheet"))
+    def test_invalid_credentials(self, setup, username, password):
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.lp = LoginPage(self.driver)
+        self.lp.insert_username(username)
+        self.lp.insert_password(password)
+        self.lp.click_login_button()
+        self.lp.login_warning_text()
