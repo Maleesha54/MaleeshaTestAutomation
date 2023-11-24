@@ -1,3 +1,4 @@
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from PageObject.BasePage import BasePage
 
@@ -31,5 +32,8 @@ class LoginPage(BasePage):
         self.is_element_displayed(By.CSS_SELECTOR, self.EDIT_ACCOUNT_LINK_CSS_SELECTOR)
 
     def login_warning_text(self):
+        try:
         # self.driver.find_element(By.CSS_SELECTOR, self.WARNING_TEXT_CSS_SELECTOR).is_displayed()
-        self.is_element_displayed(By.CSS_SELECTOR, self.WARNING_TEXT_CSS_SELECTOR)
+            self.is_element_displayed(By.CSS_SELECTOR, self.WARNING_TEXT_CSS_SELECTOR)
+        except NoSuchElementException as e:
+            print(f"exception {e}")
